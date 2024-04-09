@@ -38,7 +38,7 @@ jobs:
       run: |
         echo "TIME=$(TZ=UTC-8 date +%m%d%H%M )" >> $GITHUB_OUTPUT
 
-    - name: Build Kernel GSI Version
+    - name: Build Kernel
       run: |
        sudo ln -sf /usr/bin/python2.7 /usr/bin/python
        if [ -d include/config ];
@@ -50,7 +50,7 @@ jobs:
        fi
 
         
-       export PATH=$(pwd)/aarch64-linux-android-4.9/bin/:$PATH
+       export PATH=$(pwd)/clang-r346389c/bin/:$PATH
        export ARCH=arm64
        export SUBARCH=arm64
        make $KERNEL_CMDLINE merge_kirin970_defconfig
